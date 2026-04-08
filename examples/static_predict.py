@@ -6,8 +6,8 @@ def main():
     tcasl = TCASL()
     
     # Paths to example frames
-    path1 = "frame_1.png"
-    path2 = "frame_2.png"
+    path1 = "examples/frame_1.png"
+    path2 = "examples/frame_2.png"
     
     # Read frames
     frame1 = cv2.imread(path1, cv2.IMREAD_GRAYSCALE)
