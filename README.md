@@ -13,7 +13,7 @@ TCASL is a lightweight, pure Python inference engine for predicting American Sig
 You can install the latest release of TCASL from PyPI using `pip`:
 
 ```bash
-pip install TCASL
+pip install tcasl
 ```
 
 ## Usage in Python
