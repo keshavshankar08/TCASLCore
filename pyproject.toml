@@ -25,5 +25,5 @@ package-dir = {"" = "src"}
 packages = ["tcasl"] 
 
 [project.urls]
-Homepage = "https://github.com/TODO"
-Issues = "https://github.com/TODO/issues"
+Homepage = "https://github.com/keshavshankar08/TCASLCore"
+Issues = "https://github.com/keshavshankar08/TCASLCore/issues"

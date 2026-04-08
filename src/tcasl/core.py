@@ -28,7 +28,7 @@ class BaseCNN(nn.Module):
 MODEL_REGISTRY = {
     "cnn_v1": {
         "class": BaseCNN,
-        "url": "https://github.com/YOUR_USERNAME/TCASLCore/releases/download/v1.0.0/cnn_v1.pth"
+        "url": "https://github.com/keshavshankar08/TCASLCore/releases/download/v1.0.0/cnn_v1.pth"
     },
     # "snn_v1": {
     #     "class": BaseSNN,
