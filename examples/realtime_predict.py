@@ -7,10 +7,10 @@ def main():
     tcasl = TCASL()
     
     # Setup video capture
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
 
     # Buffer for predictions
-    prediction_buffer = deque(maxlen=15)
+    prediction_buffer = deque(maxlen=30)
     
     # Initial frame
     previous_frame = None
@@ -37,18 +37,24 @@ def main():
         tc_frame = tcasl.compute_temporal_contrast(previous_frame, processed_frame, threshold=20)
         
         # Predict signed letter
-        prediction = tcasl.predict(tc_frame)
+        predictions = tcasl.predict(tc_frame, top_k=5)
 
         # Add prediction to buffer
-        prediction_buffer.append(prediction)
+        prediction_buffer.append(predictions[0])
         
         # Get majority vote prediction from buffer
-        majority_pred = max(set(prediction_buffer), key=prediction_buffer.count)
+        labels_only = [item[0] for item in prediction_buffer]
+        majority_pred = max(set(labels_only), key=labels_only.count)
+        
+        # Get confidence associated with winning class
+        majority_confs = [item[1] for item in prediction_buffer if item[0] == majority_pred]
+        avg_confidence = sum(majority_confs) / len(majority_confs)
         
         # Show result
-        processed_frame_copy = processed_frame.copy()
-        cv2.putText(processed_frame_copy, majority_pred.upper(), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-        cv2.imshow("Grayscale Frame", processed_frame_copy)
+        display_text = f"{majority_pred.upper()} ({avg_confidence:.2f})"
+        processed_frame_color = cv2.cvtColor(processed_frame, cv2.COLOR_GRAY2BGR)
+        cv2.putText(processed_frame_color, display_text, (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        cv2.imshow("Grayscale Frame", processed_frame_color)
         cv2.imshow("Temporal Contrast Frame", tc_frame)
         
         # Update previous frame as current

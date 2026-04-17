@@ -12,13 +12,14 @@ authors = [
     { name = "Keshav Shankar", email = "keshavshankar08@gmail.com" }
 ]
 dependencies = [
-    "opencv-python",
-    "numpy",
-    "torch",
+    "opencv-python>=4.9.0,<4.11",
+    "numpy>=1.26.0,<2.0",
+    "torch>=2.0.0",
     "torchvision",
-    "pillow"
+    "pillow>=9.0.0",
+    "lava-dl"
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.10, <3.11"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

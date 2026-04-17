@@ -21,10 +21,10 @@ def main():
     tc_frame = tcasl.compute_temporal_contrast(processed1, processed2)
 
     # Predict signed letter
-    prediction = tcasl.predict(tc_frame)
+    predictions = tcasl.predict(tc_frame, top_k=5)
 
     # Show result
-    print(f"Predicted ASL Character: {prediction.upper()}")
+    print(f"Top 5 ASL Characters: {predictions}")
 
 if __name__ == "__main__":
     main()

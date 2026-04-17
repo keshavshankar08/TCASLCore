@@ -1,2 +1,8 @@
 build
 twine
+opencv-python>=4.9.0,<4.11
+numpy>=1.26.0,<2.0
+torch>=2.0.0
+torchvision
+pillow>=9.0.0
+lava-dl
